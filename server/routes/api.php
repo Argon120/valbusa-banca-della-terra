@@ -1,19 +1,18 @@
 <?php
 
+use App\Http\Controllers\TerrenosController;
+use App\Http\Controllers\ProprietariosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::get('/proprietarios', [ProprietariosController::class, 'list']);
+Route::get('/proprietarios/{id}', [ProprietariosController::class, 'detail']);
+Route::post('/proprietarios', [ProprietariosController::class, 'create']);
+Route::delete('/proprietarios', [ProprietariosController::class, 'delete']);
+
+Route::get('/terrenos', [TerrenosController::class, 'list']);
+Route::get('/terrenos/{id}', [TerrenosController::class, 'detail']);
+Route::post('/terrenos', [TerrenosController::class, 'create']);
+Route::delete('/terrenos', [TerrenosController::class, 'delete']);
